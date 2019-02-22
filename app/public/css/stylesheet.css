@@ -1,0 +1,72 @@
+.logo {
+    width: 80px !important;
+    height: 50px !important;
+    border-radius: 20%;
+}
+
+body {
+  background-color: gainsboro;
+  font-family: "Khula", sans-serif;
+}
+th {
+  cursor: pointer;
+}
+
+.st_tbody {
+    display: block;
+    height:300px;
+    overflow:auto;
+}
+.st_thead, .st_tbody .st_tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+.st_thead {
+  width: calc( 100% - 2em );
+}
+
+td.comment {
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+.profile {
+  display: block;
+  max-height: 400px;
+}
+.card-body {
+  display: block;
+  max-height: 180px;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  border: black !important;
+}
+
+.table-wrapper-scroll-y {
+display: block;
+max-height: 350px;
+}
+
+#studentTable {
+  background-color: #e9ecef;
+}
+
+
+#averageTable {
+  background-color: #343a40!important;
+  color: white;
+}
+
+.add_edit_form {
+  background-color: #e9ecef;
+}
+
+.form-inline {
+  color: #e9ecef;
+}
+
+.group_form {
+  background-color: #e9ecef;
+}

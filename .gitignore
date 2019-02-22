@@ -1,0 +1,7 @@
+cookbooks/
+
+DS_Store
+
+Berksfile.lock
+.vagrant/
+ubuntu-xenial-16.04-*

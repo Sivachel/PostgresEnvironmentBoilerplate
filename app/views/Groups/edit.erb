@@ -1,0 +1,23 @@
+<div class="container group_form">
+
+  <h1>Edit an existing group</h1>
+
+  <form class="" action="/group/<%= @group.groupid %>" method="post">
+    
+    <input type="hidden" name="_method" value="put">
+
+    <input type="text" name="groupname" value="<%= @group.groupname %>" placeholder="Group Name">
+    <% if @group.grouptype == "Engineering" %>
+    <select name="grouptype">
+      <option value="Engineering">Engineering</option>
+      <option value="Business">Business</option>
+    </select>
+    <% else %>
+    <select name="grouptype">
+      <option value="Business">Business</option>
+      <option value="Engineering">Engineering</option>
+    </select>
+    <% end %>
+    <input type="submit" value="Edit Group">
+  </form>
+</div>

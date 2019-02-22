@@ -1,0 +1,20 @@
+<table id="studentTable" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th onclick="sortTable(0)" scope="col">Student ID</th>
+      <th onclick="sortTable(1)" scope="col">First Name</th>
+      <th onclick="sortTable(2)" scope="col">Last Name</th>
+      <th scope="col">Group ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @searchresults.each do |student| %>
+    <tr>
+      <td><a href="/students/<%= student.studentid %>"><%= student.studentid %></a></td>
+      <td><a href="/students/<%= student.studentid %>"><%= student.firstname %></a></td>
+      <td><a href="/students/<%= student.studentid %>"><%= student.lastname %></a></td>
+      <td><a href="/students/<%= student.studentid %>"><%= student.groupid %></a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

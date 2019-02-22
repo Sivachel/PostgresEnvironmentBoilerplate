@@ -1,0 +1,24 @@
+<h1>Edit Attendence</h1>
+
+<form class="" action="/attendence/<%= @attendence.attendenceid %>" method="post">
+
+  <input type="hidden" name="_method" value="put">
+
+  <label for="">Date:</label>
+  <input type="date" name="date" value="<%= @attendence.date %>">
+  <label for="">Status:</label>
+  <select name="status">
+    <option value="On Time">On Time</option>
+    <option value=">5 Min Late"> >5 Min Late </option>
+    <option value="<5 Min Late">  <5 Min Late </option>
+    <option value="Authorised Absence"> Authorised Absence</option>
+    <option value="Unauthorised Absence"> Unauthorised Absence</option>
+  </select>
+  <label for="">Comments: </label>
+  <input type="text" name="comments" value="<%= @attendence.comments %>" maxlength="255">
+
+
+
+
+  <input type="submit" value="Update Table">
+</form>

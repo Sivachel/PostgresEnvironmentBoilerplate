@@ -1,0 +1,122 @@
+<div id="studentTable" class="">
+  <div class="row justify-content-center align-items-start">
+    <div class="col-sm-3 profile">
+      <div class="card" style="width: 17rem;">
+        <img class="card-img-top" src="/images/person_placeholder.png" alt="Card image cap" width="50px" height="180px">
+        <div class="card-body profile-style">
+          <h2 class="card-title"><%= @students.firstname %> <%= @students.lastname %></h2>
+          <p class="card-text"><%= @students.bio %></p>
+          Belongs to group <a href="/<%= @students.groupid %>" class="card-text"><%= @group.groupname %></a>
+        </div>
+        <div class="container">
+
+        </div>
+        <div class="row justify-content-around button-style">
+          <form class="btn left" action="" method="">
+            <a href="/students/<%= @students.studentid %>/edit" class="btn btn-primary">Edit Student</a>
+          </form>
+          <form class="btn right" action="/students/<%= @students.studentid %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete Student" class="btn btn-primary" >
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-9 ">
+      <table class="stable table table-fixed table-wrapper-scroll-y">
+        <thead class="st_head thead-dark ">
+          <tr >
+            <th scope="col">Status</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th scope="col">Date</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th scope="col">Comment</th>
+            <th></th>
+            <th></th>
+            <th scope="col">Edit Attendence</th>
+            <th></th>
+            <th></th>
+            <th scope="col">Delete Attendence </th>
+          </tr>
+        </thead>
+        <tbody class="st_tbody">
+          <% attendence = Attendence.find @students.studentid, 'student'  %>
+          <% attendence.each do |attend| %>
+          <tr class="st_tr">
+            <td><%= attend.status %></td>
+            <td><%= attend.date %></td>
+            <td class="comment"><%= attend.comments %></td>
+            <td claas="comment"><button type="button" name="button"><a href="/attendence/<%=attend.attendenceid %>/edit">Edit</a></button></td>
+            <td><form class="" action="/attendence/<%= attend.attendenceid %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+              <input type="submit" value="Delete">
+            </form></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <tfoot>
+        <tr>
+          <form class="" action="/<%= @students.studentid %>" method="post">
+            <td>
+              <select name="status">
+                <option value="On Time">On Time</option>
+                <option value=">5 Min Late"> >5 Min Late </option>
+                <option value="<5 Min Late">  <5 Min Late </option>
+                <option value="Authorised Absence"> Authorised Absence</option>
+                <option value="Unauthorised Absence"> Unauthorised Absence</option>
+              </select>
+              <input type="hidden" name="studentid" value="<%= @students.studentid %>">
+            </td>
+            <td>
+              <input type="date" name="date" value="<%= Date.today %>">
+            </td>
+            <td>
+              <input type="text" name="comments" placeholder="Comment" maxlength="255">
+            </td>
+            <td>
+              <input type="submit" name="" value="Add New Attendence">
+            </td>
+          </form>
+        </tr>
+      </tfoot>
+    </div>
+  </div>
+  <div >
+  <br>
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <thead id="averageTable">
+          <tr>
+            <th scope="col">On Time</th>
+            <th scope="col">Authorised Absence</th>
+            <th scope="col">Unauthorised Absence</th>
+            <th scope="col"> >5 Min Late</th>
+            <th scope="col"> <5 Min Late</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td ><%= @onTimeCount.round(2) %>%</td>
+              <td ><%= @authorisedCount.round(2) %>%</td>
+              <td ><%= @unAuthorisedCount.round(2) %>%</td>
+              <td ><%= @more5Count.round(2) %>%</td>
+              <td ><%= @less5Count.round(2) %>%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

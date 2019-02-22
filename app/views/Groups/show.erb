@@ -1,0 +1,37 @@
+
+<div class="jumbotron">
+  <h1 class="display-4"><%= @groups.groupname.capitalize %> - <%= @groups.grouptype %></h1>
+  <hr class="my-4">
+  <p>This button allows randomly generated student information to be inserted into the table.</p>
+  <p class="lead">
+    <form class="" action="/students/generate_names" method="get">
+      <input type="hidden" name="groupid" value="<%= @groups.groupid %>">
+
+      <input type="submit" class="btn btn-primary btn-lg" role="button" value="Fill Names">
+    </form>
+  </p>
+</div>
+
+  <table id="studentTable" class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Student ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+      <tr>
+        <td><a href="/students/<%= student.studentid %>"><%= student.studentid %></a></td>
+        <td><a href="/students/<%= student.studentid %>"><%= student.firstname %></a></td>
+        <td><a href="/students/<%= student.studentid %>"><%= student.lastname %></a></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="/group/<%= @groups.groupid %>/edit">Edit Group</a>
+  <form class="btn right" action="/<%= @groups.groupid %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Group" class="btn btn-primary" >
+  </form>

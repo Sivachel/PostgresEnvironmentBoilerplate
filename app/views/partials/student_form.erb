@@ -1,0 +1,46 @@
+<form class="" action="/students/<%= @Student.studentid %>" method="post">
+
+  <!-- Changes from post to put if no id is present(whether entering a new student or not) -->
+  <% if @Student.studentid %>
+    <input type="hidden" name="_method" value="put">
+  <% end %>
+
+
+    <div class="row">
+      <div class="col">
+        <label>First Name: </label>
+        <!-- Will fetch the first name if one is available -->
+        <input type="text" name="firstname" value="<%= @Student.firstname %>" placeholder="First Name" maxlength="40">
+      </div>
+      <div class="col">
+        <label>Last Name: </label>
+        <!-- Will fetch the last name if one is available -->
+        <input type="text" name="lastname" value="<%= @Student.lastname %>" placeholder="Last Name" maxlength="40">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label>Group ID: </label>
+        <!-- Will fetch the last name if one is available -->
+        <input type="text" name="groupid" value="<%= @Student.groupid %>" placeholder="Group ID" maxlength="10">
+      </div>
+      <div class="col">
+        <label> Student Bio: </label>
+        <!-- Will fetch the Bio if one is available -->
+        <input type="text" name="bio" value="<%= @Student.bio %>" placeholder="Student Bio" maxlength="255">
+      </div>
+    </div>
+
+
+  <!-- Button will change depending on whether you're adding/editing student info -->
+  <% if !@Student.studentid %>
+    <div class="form-group">
+      <input type="submit" value="Add Student">
+    </div>
+  <% else %>
+    <div class="form-group">
+      <input type="submit" value="Save Changes">
+    </div>
+  <% end %>
+</form>
